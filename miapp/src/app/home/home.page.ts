@@ -10,6 +10,13 @@ export class HomePage {
   usuario: string = '';
   password: string = '';
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {
+    const state = this.route.snapshot.paramMap.get('state');
+    if (state){
+      const data = JSON.parse(state);
+      this.usuario = data.usuario;
+      this.password = data.password;
+    }
+  }
   }
 
